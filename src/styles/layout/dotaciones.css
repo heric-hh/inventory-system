@@ -1,0 +1,72 @@
+.main-es__buttons-container {
+    margin-top: 2rem;
+    margin-left: 5rem;
+}
+
+.button__es {
+    color: white;
+    background-color: var(--blue);
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.button__es.enabled {
+    background-color: rgb(173, 59, 59);
+}
+
+.button__es:active {
+    background-color: var(--mint);
+    color: black;
+}
+
+/*Formulario*/
+
+.main-es__form-es {
+    width: 70%;
+    margin: 3rem auto;
+}
+
+.form-es__title {
+    font-size: 2rem;
+}
+
+.form-es__legend {
+    font-size: 1.5rem;
+}
+
+.form-es__fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-es__label {
+    font-size: 1.4rem;
+    margin-bottom: .5rem;
+    margin-top: 1rem;
+}
+
+.form-es__input {
+    padding: .5rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    border-radius: 1rem;
+    border: 1px solid #c9c9c9;
+}
+
+.form-es__select {
+    font-size: 1.6rem;
+    padding: .5rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-es__submit {
+    margin: 2rem auto;
+    width: 40%;
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    background-color: var(--blue);
+    border-radius: 1rem;
+    color: white;
+}

@@ -1,0 +1,19 @@
+{
+    "name": "hheric/inventorysystem",
+    "description": "An inventory system",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MVC\\":"./",
+            "Controllers\\":"./controllers",
+            "Models\\":"./models" 
+        }
+    },
+    "authors": [
+        {
+            "name": "heric-hh",
+            "email": "erhh.015@gmail.com"
+        }
+    ],
+    "require": {}
+}

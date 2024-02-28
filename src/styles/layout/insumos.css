@@ -1,0 +1,85 @@
+.content__nav {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.content__nav__list {
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+}
+
+.content__nav__list__item {
+    font-size: 1.2rem;
+    flex-basis: 18rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.content__nav__list__item:last-child {
+    flex-basis: 30rem;
+    margin-left: auto;
+}
+
+.content__nav__link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+}
+
+.content__nav__link:hover {
+    background-color: var(--mint);
+}
+
+.content__nav__link:active {
+    color: var(--blue);
+}
+
+.content__nav__list__item__link.enabled {
+    font-size: 1.3rem;
+}
+
+.content__search-container {
+    display: flex;
+    align-items: center;
+}
+
+.content__search {
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    padding: 0.4rem 0.5rem;
+    margin-left: 1rem;
+}
+
+/* Filtros */
+
+.main-insumos__filters {
+    font-size: 1.2rem;
+    margin-top: 3rem;
+    margin-left: 5rem;
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Tabla */
+
+.insumos-table {
+    border: 1px solid var(--mint);
+    border-radius: 1rem;
+    margin: 3rem auto;
+    width: 80%;
+}
+
+.insumos-table__title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.insumos-table__head {
+    border-bottom: 1rem;
+    background-color: var(--mint);
+    font-size: 1.4rem;
+}
+

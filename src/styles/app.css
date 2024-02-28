@@ -1,0 +1,8 @@
+@import "global/global.css";
+
+@import "component/layout.css";
+
+@import "layout/home.css";
+@import "layout/login.css";
+@import "layout/insumos.css";
+@import "layout/entradasalida.css";

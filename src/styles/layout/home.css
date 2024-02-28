@@ -1,0 +1,42 @@
+.landing {
+    width: 100%;
+    height: 100vh;
+    background: rgb(248,247,255);
+    background: linear-gradient(180deg, rgba(248,247,255,1) 0%, rgba(223,223,232,1) 66%, rgba(176,239,251,1) 100%);
+}
+
+.landing__nav {
+    display: flex;
+    align-items: center;
+    padding: 2rem 3rem;
+    gap: 3rem;
+}
+
+.landing__nav__title {
+    font-size: 1.6rem;
+}
+
+.landing__title-container {
+    margin: 8rem 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing__title {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+}
+
+.landing__subtitle {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.landing__button {
+    background-color: black;
+    color: white;
+    font-size: 2rem;
+    padding: 1rem 4rem;
+}

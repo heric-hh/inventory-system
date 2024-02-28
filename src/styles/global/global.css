@@ -1,0 +1,67 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+:root {
+  --white: #F2F2F2;
+  --mint: #C4F2EE;
+  --aqua: #96C6D9;
+  --blue: #4E8BBF;
+  --deepBlue: #16205c;
+  --brown: #595959;
+  --font: 'Ubuntu', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 10px;
+    font-family: var(--font);
+  }
+
+  * {
+    margin: 0;
+  }
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  input, button, textarea, select {
+    font: inherit;
+  }
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  #root, #__next {
+    isolation: isolate;
+  }
+
+button {
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.button-warning {
+  color: white;
+  background-color: rgb(195, 53, 53);
+  font-size: 1.2rem;
+}
+
+.content {
+  margin-left: 8rem;
+}
