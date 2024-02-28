@@ -6,7 +6,6 @@ use Controllers\DotacionesController;
 use Controllers\LoginController;
 use Controllers\PagesController;
 use Controllers\InsumosController;
-use Controllers\EntradaSalidaController;
 use MVC\Router;
 
 $router = new Router();

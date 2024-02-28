@@ -1,6 +1,11 @@
 <?php
 
-class ConexionDB
+namespace Models;
+
+use PDO;
+use PDOException;
+
+class ConnectionDB
 {
     private static $instance = null;
     private $conn;
