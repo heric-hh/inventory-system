@@ -24,9 +24,9 @@ class InsumosModel implements iActiveRecord
     public int $id;
     public string $clave;
     public string $descripcion;
-    public int $id_categoria;
-    public int $id_presentacion;
-    public int $id_lote;
+    public string $categoria;
+    public string $presentacion;
+    public int $lote;
     public int $cantidad_total;
 
 
@@ -60,7 +60,11 @@ class InsumosModel implements iActiveRecord
     public static function read(): array
     {
         //! Reescribir método para que muestre los datos con inner join
-        $query = "SELECT * FROM insumos";
+        $query = "
+            SELECT insumos.id, insumos.clave, insumos.descripcion, 
+            categorias.categoria, insumos.cantidad_total
+            FROM insumos
+            INNER JOIN categorias ON categorias.id = insumos.id_categoria";
         $result = self::consultSQL($query);
         return $result;
     }

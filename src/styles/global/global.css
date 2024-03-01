@@ -56,10 +56,26 @@ a {
   text-decoration: none;
 }
 
+table td {
+  font-size: 1.2rem;
+}
+
+.button {
+  padding: 1.2rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
 .button-warning {
   color: white;
   background-color: rgb(195, 53, 53);
-  font-size: 1.2rem;
+}
+
+.button-alert {
+  color: white;
+  background-color: #FA7F08;
 }
 
 .content {

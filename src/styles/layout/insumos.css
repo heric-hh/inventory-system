@@ -83,3 +83,13 @@
     font-size: 1.4rem;
 }
 
+.insumos-table__actions {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.insumos-table__actions form {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}

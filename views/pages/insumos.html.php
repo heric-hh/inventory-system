@@ -26,12 +26,31 @@
     <table class="insumos-table">
         <caption class="insumos-table__title">Tabla de Insumos</caption>
         <thead class="insumos-table__head">
-            <tr class="insumos-table__tr"> 
+            <tr class="insumos-table__tr">
                 <th class="insumos-table__th">Clave</th>
                 <th class="insumos-table__th">Descripción</th>
                 <th class="insumos-table__th">Categoría</th>
                 <th class="insumos-table__th">Disponibles</th>
+                <th class="insumos-table__th">Acciones</th>
             </tr>
         </thead>
+        <tbody class="insumos-table__body">
+            <?php foreach ($insumos as $insumo) : ?>
+                <tr>
+                    <td> <?php echo $insumo->clave ?></td>
+                    <td> <?php echo $insumo->descripcion ?></td>
+                    <td> <?php echo $insumo->categoria ?></td>
+                    <td> <?php echo $insumo->cantidad_total ?></td>
+                    <td class="insumos-table__actions">
+                        <form action="" method="post">
+                            <input type="hidden" name="id" value="<?php echo $insumo->id ?>">
+                            <input type="submit" class="button button-warning" value="Eliminar">
+                        </form>
+                        <a href="#" class="button button-alert">Actualizar</a>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+
+        </tbody>
     </table>
 </main>
