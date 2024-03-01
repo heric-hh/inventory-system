@@ -30,7 +30,7 @@ class InsumosModel implements iActiveRecord
     public int $cantidad_total;
 
 
-    protected static array $errors;
+    protected static array $errors = [];
 
     public function __construct($args = [])
     {
@@ -59,7 +59,6 @@ class InsumosModel implements iActiveRecord
 
     public static function read(): array
     {
-        //! Reescribir método para que muestre los datos con inner join
         $query = "
             SELECT insumos.id, insumos.clave, insumos.descripcion, 
             categorias.categoria, insumos.cantidad_total

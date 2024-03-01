@@ -16,4 +16,16 @@ class InsumosController
             "insumos" => $insumos
         ]);
     }
+
+    public static function create(Router $router)
+    {
+        $errors = InsumosModel::getErrors();
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        }
+
+        $router->render("pages/crearinsumo", [
+            "errors" => $errors,
+        ]);
+    }
 }

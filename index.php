@@ -12,7 +12,10 @@ $router = new Router();
 
 $router->get("/", [PagesController::class, "showLanding"]);
 $router->get("/login", [LoginController::class, "login"]);
+
 $router->get("/insumos", [InsumosController::class, "showInsumos"]);
+$router->get("/insumos/crear", [InsumosController::class, "create"]);
+
 $router->get("/dotaciones", [DotacionesController::class, "showDotaciones"]);
 
 $router->checkRoutes();

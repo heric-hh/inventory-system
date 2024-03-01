@@ -93,3 +93,48 @@
     justify-content: space-around;
     gap: 1rem;
 }
+
+/* CREAR INSUMOS*/
+.main-crear-insumo__container {
+    padding: 2rem 7rem;
+}
+
+.main-crear-insumo__container > h2 {
+    font-size: 2.5rem;
+}
+
+.main-crear-insumo__form {
+    display: flex;
+    gap: 2rem;
+    padding: 3rem 0;
+    justify-content: space-evenly;
+}
+
+.form__left, .form__right {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30%;
+}
+
+.crear-insumo__form__label, .crear-insumo__form__select {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.crear-insumo__form__select {
+    margin-bottom: 2rem;
+    padding: .6rem 1rem;
+}
+
+.crear-insumo__form__input {
+    font-size: 1.5rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.crear-insumo__form__input[type="number"] {
+    margin-bottom: 4rem;
+}
