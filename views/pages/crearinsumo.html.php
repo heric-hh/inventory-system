@@ -14,6 +14,11 @@
                 <label for="categoria" class="crear-insumo__form__label">Categoría</label>
                 <select name="" id="" class="crear-insumo__form__select">
                     <option selected value="">--Seleccione--</option>
+                    <?php foreach ($categorias as $categoria) : ?>
+                        <option value="<? $categoria->id ?>">
+                            <? echo $categoria->categoria ?>
+                        </option>
+                    <? endforeach ?>
                 </select>
             </div>
             <div class="form__right">

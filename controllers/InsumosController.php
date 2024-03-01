@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Models\CategoriasModel;
 use Models\InsumosModel;
 use MVC\Router;
 
@@ -13,19 +14,21 @@ class InsumosController
     {
         $insumos = InsumosModel::read();
         $router->render("pages/insumos", [
-            "insumos" => $insumos
+            "insumos" => $insumos,
         ]);
     }
 
     public static function create(Router $router)
     {
         $errors = InsumosModel::getErrors();
+        $categorias = CategoriasModel::read();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         $router->render("pages/crearinsumo", [
             "errors" => $errors,
+            "categorias" => $categorias
         ]);
     }
 }
