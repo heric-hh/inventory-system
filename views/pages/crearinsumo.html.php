@@ -25,6 +25,11 @@
                 <label for="presentacion" class="crear-insumo__form__label">Presentación</label>
                 <select name="" id="" class="crear-insumo__form__select">
                     <option selected value=""> --Seleccione--</option>
+                    <?php foreach ($presentaciones as $presentacion) : ?>
+                        <option value="<? $presentacion->id ?>">
+                            <? echo $presentacion->presentacion ?>
+                        </option>
+                    <? endforeach ?>
                 </select>
 
                 <label for="lote" class="crear-insumo__form__label">Número de Lote</label>
