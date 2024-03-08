@@ -13,7 +13,7 @@ class InsumosModel implements iActiveRecord
         "id",
         "clave",
         "descripcion",
-        "categoria",
+        "id_categoria",
         "id_presentacion",
         "id_lote",
         "cantidad_total"
@@ -29,7 +29,7 @@ class InsumosModel implements iActiveRecord
     public $id;
     public $clave;
     public $descripcion;
-    public $categoria;
+    public $id_categoria;
     public $id_presentacion;
     public $id_lote;
     public $cantidad_total;
@@ -42,7 +42,7 @@ class InsumosModel implements iActiveRecord
         $this->id = $args["id"] ?? null;
         $this->clave = $args["clave"] ?? "";
         $this->descripcion = $args["descripcion"] ?? "";
-        $this->categoria = $args["id_categoria"] ?? "";
+        $this->id_categoria = $args["id_categoria"] ?? "";
         $this->id_presentacion = $args["id_presentacion"] ?? "";
         $this->id_lote = $args["id_lote"] ?? "";
         $this->cantidad_total = $args["cantidad_total"] ?? "";
@@ -56,14 +56,14 @@ class InsumosModel implements iActiveRecord
     public function validate(): array
     {
         if (!$this->clave) {
-            self::$errors[] = "Debes añadir un título";
+            self::$errors[] = "Debes añadir una clave";
         }
 
         if (!$this->descripcion) {
             self::$errors[] = "Debes añadir una descripción";
         }
 
-        if (!$this->categoria) {
+        if (!$this->id_categoria) {
             self::$errors[] = "Debes añadir una categoría";
         }
 
@@ -93,11 +93,7 @@ class InsumosModel implements iActiveRecord
 
     public static function read(): array
     {
-        $query = "
-            SELECT insumos.id, insumos.clave, insumos.descripcion, 
-            categorias.categoria, insumos.id_presentacion, insumos.id_lote, insumos.cantidad_total
-            FROM insumos
-            INNER JOIN categorias ON categorias.id = insumos.id_categoria";
+        $query = "SELECT * FROM insumos";
         $result = self::consultSQL($query);
         return $result;
     }

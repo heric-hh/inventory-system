@@ -14,6 +14,7 @@ class InsumosController
     public static function showInsumos(Router $router)
     {
         $insumos = InsumosModel::read();
+        $insumos = self::checkCategoria($insumos);
         $router->render("pages/insumos", [
             "insumos" => $insumos,
         ]);
@@ -42,5 +43,22 @@ class InsumosController
             "categorias" => $categorias
 
         ]);
+    }
+
+    private static function checkCategoria(array $insumos)
+    {
+        foreach ($insumos as $insumo) {
+            if ($insumo->id_categoria === 1) {
+                $insumo->id_categoria = "Cuadro Básico";
+            }
+            if ($insumo->id_categoria === 2) {
+                $insumo->id_categoria = "Anestésicos";
+            }
+            if ($insumo->id_categoria === 3) {
+                $insumo->id_categoria = "Material de Curación";
+            }
+        }
+
+        return $insumos;
     }
 }

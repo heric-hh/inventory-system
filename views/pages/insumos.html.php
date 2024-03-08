@@ -39,7 +39,7 @@
                 <tr>
                     <td> <?php echo $insumo->clave ?></td>
                     <td> <?php echo $insumo->descripcion ?></td>
-                    <td> <?php echo $insumo->categoria ?></td>
+                    <td> <?php echo $insumo->id_categoria ?></td>
                     <td> <?php echo $insumo->cantidad_total ?></td>
                     <td class="insumos-table__actions">
                         <form action="" method="post">
