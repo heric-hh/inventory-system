@@ -13,7 +13,7 @@ class InsumosModel implements iActiveRecord
         "id",
         "clave",
         "descripcion",
-        "id_categoria",
+        "categoria",
         "id_presentacion",
         "id_lote",
         "cantidad_total"
@@ -21,24 +21,31 @@ class InsumosModel implements iActiveRecord
 
     // Attributes
 
-    public int $id;
-    public string $clave;
-    public string $descripcion;
-    public string $categoria;
-    public string $presentacion;
-    public int $lote;
-    public int $cantidad_total;
+    /**
+     * id -> must be int for most cases, null for checking errors
+     * categoria & presentacion -> may be integer, but for validation purpose they must cast to a string for initialization ( "" )
+     */
+
+    public $id;
+    public $clave;
+    public $descripcion;
+    public $categoria;
+    public $id_presentacion;
+    public $id_lote;
+    public $cantidad_total;
 
 
     protected static array $errors = [];
 
     public function __construct($args = [])
     {
-        foreach ($args as $key => $value) {
-            if (property_exists($this, $key)) {
-                $this->$key = $value;
-            }
-        }
+        $this->id = $args["id"] ?? null;
+        $this->clave = $args["clave"] ?? "";
+        $this->descripcion = $args["descripcion"] ?? "";
+        $this->categoria = $args["id_categoria"] ?? "";
+        $this->id_presentacion = $args["id_presentacion"] ?? "";
+        $this->id_lote = $args["id_lote"] ?? "";
+        $this->cantidad_total = $args["cantidad_total"] ?? "";
     }
 
     public static function getErrors(): array
@@ -48,20 +55,47 @@ class InsumosModel implements iActiveRecord
 
     public function validate(): array
     {
-        echo "Validando";
-        return $array = [];
+        if (!$this->clave) {
+            self::$errors[] = "Debes añadir un título";
+        }
+
+        if (!$this->descripcion) {
+            self::$errors[] = "Debes añadir una descripción";
+        }
+
+        if (!$this->categoria) {
+            self::$errors[] = "Debes añadir una categoría";
+        }
+
+        if (!$this->id_presentacion) {
+            self::$errors[] = "Debes añadir una presentación";
+        }
+
+        if (!$this->id_lote) {
+            self::$errors[] = "Debes añadir un lote";
+        }
+
+        if (!$this->cantidad_total) {
+            self::$errors[] = "Debes añadir una cantidad";
+        }
+
+        return self::$errors;
     }
 
     public function save()
     {
-        echo "Guardando";
+        if (!is_null($this->id)) {
+            $this->update();
+        } else {
+            $this->create();
+        }
     }
 
     public static function read(): array
     {
         $query = "
             SELECT insumos.id, insumos.clave, insumos.descripcion, 
-            categorias.categoria, insumos.cantidad_total
+            categorias.categoria, insumos.id_presentacion, insumos.id_lote, insumos.cantidad_total
             FROM insumos
             INNER JOIN categorias ON categorias.id = insumos.id_categoria";
         $result = self::consultSQL($query);
@@ -82,7 +116,21 @@ class InsumosModel implements iActiveRecord
 
     public function create()
     {
-        echo "create";
+        $attributes = $this->attributes();
+
+        $connection = ConnectionDB::getInstance();
+        $conn = $connection->getConnection();
+
+        $query = "INSERT INTO " . static::$table . " ( ";
+        $query .= implode(", ", array_keys($attributes));
+        $query .= ") VALUES ( '";
+        $query .= implode("','", array_values($attributes)) . "' )";
+        $stmt = $conn->prepare($query);
+        $isQueryOk = $stmt->execute();
+
+        if ($isQueryOk) {
+            header("Location: /insumos");
+        }
     }
 
     public function update()
@@ -110,7 +158,7 @@ class InsumosModel implements iActiveRecord
         return $array;
     }
 
-    public static function createObject($row): object
+    public static function createObject(array $row): object
     {
         $obj = new static;
 
@@ -133,20 +181,6 @@ class InsumosModel implements iActiveRecord
         return $attributes;
     }
 
-    public function sanitizeAttributes(): array
-    {
-        $attributes = $this->attributes();
-        $rowsSanitized = [];
-
-        $connection = ConnectionDB::getInstance();
-        $conn = $connection->getConnection();
-
-        foreach ($attributes as $key => $value) {
-            //TODO: Verificar la implementacion de este método "escape_string" marca error.
-            // $rowsSanitized[$key] = $conn->escape_string($value);
-        }
-        return $rowsSanitized;
-    }
 
     public function sincronize($args = [])
     {

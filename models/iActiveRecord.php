@@ -22,13 +22,11 @@ interface iActiveRecord
 
     public function delete();
 
-    public static function consultSQL($query): array;
+    public static function consultSQL(string $query): array;
 
-    public static function createObject($row): object;
+    public static function createObject(array $row): object;
 
     public function attributes(): array;
-
-    public function sanitizeAttributes(): array;
 
     public function sincronize($args = []);
 }

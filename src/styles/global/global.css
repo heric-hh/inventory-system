@@ -9,6 +9,7 @@
   --blue: #4E8BBF;
   --deepBlue: #16205c;
   --brown: #595959;
+  --red: rgb(195, 53, 53);
   --font: 'Ubuntu', sans-serif;
 }
 
@@ -70,7 +71,7 @@ table td {
 
 .button-warning {
   color: white;
-  background-color: rgb(195, 53, 53);
+  background-color: var(--red);
 }
 
 .button-alert {
@@ -86,4 +87,15 @@ table td {
 
 .content {
   margin-left: 8rem;
+}
+
+.alert {
+  background-color: var(--red);
+  width: 80%;
+  padding: 1rem 2rem;
+  margin: 2rem 0;
+  text-align: center;
+  font-size: 1.8rem;
+  color: var(--white);
+  border-radius: 1rem;
 }

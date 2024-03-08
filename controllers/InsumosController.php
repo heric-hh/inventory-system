@@ -21,11 +21,19 @@ class InsumosController
 
     public static function create(Router $router)
     {
-        $errors = InsumosModel::getErrors();
+        $insumo = new InsumosModel();
         $categorias = CategoriasModel::read();
         $presentaciones = PresentacionModel::read();
 
+        $errors = InsumosModel::getErrors();
+
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $insumo = new InsumosModel($_POST["insumo"]);
+            $errors = $insumo->validate();
+
+            if (empty($errors)) {
+                $insumo->save();
+            }
         }
 
         $router->render("pages/crearinsumo", [

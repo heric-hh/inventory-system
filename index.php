@@ -15,6 +15,7 @@ $router->get("/login", [LoginController::class, "login"]);
 
 $router->get("/insumos", [InsumosController::class, "showInsumos"]);
 $router->get("/insumos/crear", [InsumosController::class, "create"]);
+$router->post("/insumos/crear", [InsumosController::class, "create"]);
 
 $router->get("/dotaciones", [DotacionesController::class, "showDotaciones"]);
 
