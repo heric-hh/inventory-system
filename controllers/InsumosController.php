@@ -15,8 +15,10 @@ class InsumosController
     {
         $insumos = InsumosModel::read();
         $insumos = self::checkCategoria($insumos);
-        $router->render("pages/insumos", [
+        $result = $_GET["result"] ?? null;
+        $router->render("pages/insumos/insumos", [
             "insumos" => $insumos,
+            "result" => $result,
         ]);
     }
 
@@ -37,11 +39,39 @@ class InsumosController
             }
         }
 
-        $router->render("pages/crearinsumo", [
+        $router->render("pages/insumos/crearinsumo", [
             "errors" => $errors,
             "presentaciones" => $presentaciones,
-            "categorias" => $categorias
+            "categorias" => $categorias,
+            "insumo" => $insumo
 
+        ]);
+    }
+
+    public static function update(Router $router)
+    {
+        $id = validateOrRedirect("/insumos");
+        $insumo = InsumosModel::find($id);
+        $errors = InsumosModel::getErrors();
+
+        $categorias = CategoriasModel::read();
+        $presentaciones = PresentacionModel::read();
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $args = $_POST["insumo"];
+            $insumo->sincronize($args);
+            $errors = $insumo->validate();
+
+            if (empty($errors)) {
+                $insumo->save();
+            }
+        }
+
+        $router->render("pages/insumos/editarinsumo", [
+            "insumo" => $insumo,
+            "categorias" => $categorias,
+            "presentaciones" => $presentaciones,
+            "errors" => $errors,
         ]);
     }
 

@@ -57,7 +57,6 @@ class Router
 
     private function containsLayoutView(string $view): bool
     {
-
         $contains = strpos($view, "pages");
         return ($contains !== false && $contains >= 0);
     }

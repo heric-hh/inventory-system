@@ -1,6 +1,17 @@
 <main class="content main-insumos">
-    <?php require_once __DIR__ . "/../includes/navcontent.html.php"; ?>
+    <?php require_once __DIR__ . "/../../includes/navcontent.html.php"; ?>
 
+    <?
+    if ($result) {
+        $alert = showAlert(intval($result));
+
+        if ($alert) { ?>
+            <div class="alert-container">
+                <p class="alert success"> <? echo sanitize($alert) ?> </p>
+            </div>
+    <? }
+    }
+    ?>
     <div class="main-insumos__filters">
         <label for="" class="main-insumos__filters__label">Categoría:</label>
         <select name="" id="">
@@ -42,11 +53,11 @@
                     <td> <?php echo $insumo->id_categoria ?></td>
                     <td> <?php echo $insumo->cantidad_total ?></td>
                     <td class="insumos-table__actions">
-                        <form action="" method="post">
+                        <form action="" method="POST">
                             <input type="hidden" name="id" value="<?php echo $insumo->id ?>">
                             <input type="submit" class="button button-warning" value="Eliminar">
                         </form>
-                        <a href="#" class="button button-alert">Actualizar</a>
+                        <a href="/insumos/editar?id=<? echo $insumo->id ?>" class="button button-alert">Editar</a>
                     </td>
                 </tr>
             <?php endforeach ?>

@@ -15,8 +15,11 @@ $router->get("/login", [LoginController::class, "login"]);
 
 $router->get("/insumos", [InsumosController::class, "showInsumos"]);
 $router->get("/insumos/crear", [InsumosController::class, "create"]);
-$router->post("/insumos/crear", [InsumosController::class, "create"]);
+$router->get("/insumos/editar", [InsumosController::class, "update"]);
 
 $router->get("/dotaciones", [DotacionesController::class, "showDotaciones"]);
+
+$router->post("/insumos/crear", [InsumosController::class, "create"]);
+$router->post("/insumos/editar", [InsumosController::class, "update"]);
 
 $router->checkRoutes();

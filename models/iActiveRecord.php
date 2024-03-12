@@ -14,7 +14,7 @@ interface iActiveRecord
 
     public static function get($rows): array;
 
-    public static function find($id): array;
+    public static function find($id): object;
 
     public function create();
 

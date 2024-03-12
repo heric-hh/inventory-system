@@ -90,7 +90,6 @@ table td {
 }
 
 .alert {
-  background-color: var(--red);
   width: 80%;
   padding: 1rem 2rem;
   margin: 2rem 0;
@@ -98,4 +97,12 @@ table td {
   font-size: 1.8rem;
   color: var(--white);
   border-radius: 1rem;
+}
+
+.warning {
+  background-color: var(--red);
+}
+
+.success {
+  background-color: var(--deepBlue);
 }

@@ -104,10 +104,11 @@ class InsumosModel implements iActiveRecord
         return $array = [];
     }
 
-    public static function find($id): array
+    public static function find($id): object
     {
-        echo "find";
-        return $array = [];
+        $query = "SELECT * FROM " . static::$table . " WHERE id = $id";
+        $result = self::consultSQL($query);
+        return array_shift($result);
     }
 
     public function create()
@@ -125,13 +126,35 @@ class InsumosModel implements iActiveRecord
         $isQueryOk = $stmt->execute();
 
         if ($isQueryOk) {
-            header("Location: /insumos");
+            header("Location: /insumos?result=1");
         }
     }
 
     public function update()
     {
-        echo "update";
+        $connection = ConnectionDB::getInstance();
+        $conn = $connection->getConnection();
+
+        $attributes = $this->attributes();
+        $values = [];
+
+        foreach ($attributes as $key => $value) {
+            $values[] = "$key = '$value'";
+        }
+
+        $query = "UPDATE " . static::$table . " SET ";
+        $query .= join(", ", $values);
+        $query .= " WHERE id = '" . $this->id . "' ";
+        // $query .= " LIMIT 1";
+        // debug($query);
+        $stmt = $conn->prepare($query);
+        $isQueryOk = $stmt->execute();
+
+        if ($isQueryOk) {
+            header("Location: /insumos?result=2");
+        }
+
+        debug($values);
     }
 
     public function delete()
