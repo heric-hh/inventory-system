@@ -17,9 +17,11 @@ $router->get("/insumos", [InsumosController::class, "showInsumos"]);
 $router->get("/insumos/crear", [InsumosController::class, "create"]);
 $router->get("/insumos/editar", [InsumosController::class, "update"]);
 
-$router->get("/dotaciones", [DotacionesController::class, "showDotaciones"]);
 
 $router->post("/insumos/crear", [InsumosController::class, "create"]);
 $router->post("/insumos/editar", [InsumosController::class, "update"]);
+$router->post("/insumos/eliminar", [InsumosController::class, "delete"]);
 
+
+$router->get("/dotaciones", [DotacionesController::class, "showDotaciones"]);
 $router->checkRoutes();

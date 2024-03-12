@@ -53,7 +53,7 @@
                     <td> <?php echo $insumo->id_categoria ?></td>
                     <td> <?php echo $insumo->cantidad_total ?></td>
                     <td class="insumos-table__actions">
-                        <form action="" method="POST">
+                        <form action="insumos/eliminar" method="POST">
                             <input type="hidden" name="id" value="<?php echo $insumo->id ?>">
                             <input type="submit" class="button button-warning" value="Eliminar">
                         </form>

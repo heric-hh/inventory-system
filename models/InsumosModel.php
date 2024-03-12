@@ -145,21 +145,26 @@ class InsumosModel implements iActiveRecord
         $query = "UPDATE " . static::$table . " SET ";
         $query .= join(", ", $values);
         $query .= " WHERE id = '" . $this->id . "' ";
-        // $query .= " LIMIT 1";
-        // debug($query);
         $stmt = $conn->prepare($query);
         $isQueryOk = $stmt->execute();
 
         if ($isQueryOk) {
             header("Location: /insumos?result=2");
         }
-
-        debug($values);
     }
 
     public function delete()
     {
-        echo "delete";
+        $connection = ConnectionDB::getInstance();
+        $conn = $connection->getConnection();
+
+        $query = "DELETE FROM " . static::$table . " WHERE id = " . $this->id;
+        $stmt = $conn->prepare($query);
+        $isQueryOk = $stmt->execute();
+
+        if ($isQueryOk) {
+            header("Location: /insumos?result=3");
+        }
     }
 
     public static function consultSQL($query): array
