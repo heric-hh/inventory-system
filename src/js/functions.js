@@ -1,3 +1,5 @@
+import { getSearchInput } from "./search.js";
+
 export function showNewButton() {
     const newBtn = document.querySelector(".header__new");
     newBtn.addEventListener("click", showNewMenu);
@@ -108,15 +110,27 @@ function showEntradaForm() {
                     <option> Dotación Extraordinaria </option>
                 </select>
 
-                <label for="tabla" class="form-es__label">Selecciona los insumos de la dotación:</label>
-                <table class="form-es__table">
+                <h2 class="form-es__h2">Selecciona los insumos de la dotación:</h2>
+
+                <label for="buscar_insumo" class="form-es__label"> Buscar: </label>
+                <input class="form-es__input" name="buscar_insumo" id="buscarInsumo">
                 
+                <table class="form-es__table">
+                    <thead class="insumos-table__head">
+                        <tr class="insumos-table__tr">
+                            <th class="insumos-table__th">Clave</th>
+                            <th class="insumos-table__th">Descripción</th>
+                            <th class="insumos-table__th">Categoría</th>
+                            <th class="insumos-table__th">Añadir</th>
+                        </tr>
+                    </thead>
                 </table>
 
                 <input type="submit" value="Guardar" class="form-es__submit">
             </fieldset>
         `;
         main.appendChild(entradaForm);
+        getSearchInput();
     }
     else {
         this.textContent = "Crear Entrada de Insumos";
@@ -150,6 +164,7 @@ function showSalidaForm() {
         </fieldset>
         `;
         main.appendChild(salidaForm);
+
     }
     else {
         this.textContent = "Crear Salida de Insumos";
