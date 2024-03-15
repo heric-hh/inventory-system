@@ -2,6 +2,7 @@
 
 require_once __DIR__ . "/includes/app.php";
 
+use Controllers\APIController;
 use Controllers\DotacionesController;
 use Controllers\LoginController;
 use Controllers\PagesController;
@@ -24,4 +25,6 @@ $router->post("/insumos/eliminar", [InsumosController::class, "delete"]);
 
 
 $router->get("/dotaciones", [DotacionesController::class, "showDotaciones"]);
+
+$router->post("/api/insumos", [APIController::class, "getInsumos"]);
 $router->checkRoutes();
